@@ -1,0 +1,22 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+
+{% block content %}
+
+<div style="margin: 20px;">
+
+        <!-- This will display and error message -->
+{% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+ <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+{% endwith %}
+
+{{ wtf.quick_form(form, novalidate=True) }}
+
+  </div>
+{% endblock %}
+
+{% include "footer.html" %}

@@ -1,0 +1,31 @@
+{% include "header.html" %}
+
+  <!-- Page Header -->
+
+
+
+<div style="margin:20px;">
+  <div class="row">
+     {% for product in product %}
+    <div class="col-sm-4" style="margin-bottom: 20px;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{product.product_name}}</h5>
+          <p class="card-text">{{product.product_name}}</p>
+          <p class="card-text">$ {{product.product_price}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<form style="margin:20px;">
+  <a class="btn" href="{{url_for('checkout')}}">Check Out</a>
+</form>
+
+
+
+
+
+
+{% include "footer.html" %}

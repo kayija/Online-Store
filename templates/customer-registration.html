@@ -1,0 +1,16 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% include "header.html" %}
+
+
+
+
+{% block content %}
+
+<div style="margin: 200px;">
+
+{{ wtf.quick_form(form, novalidate=True) }}
+
+  </div>
+{% endblock %}
+
+{% include "footer.html" %}
