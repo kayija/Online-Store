@@ -3,16 +3,20 @@
   <!-- Page Header -->
 
 
-
+{% if count == 0 %}
+<h5>Cart is Empty</h5>
+{% else %}
+<h1>Cart</h1>
 <div style="margin:20px;">
   <div class="row">
-     {% for product in product %}
+     {% for item in items %}
     <div class="col-sm-4" style="margin-bottom: 20px;">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{{product.product_name}}</h5>
-          <p class="card-text">{{product.product_name}}</p>
-          <p class="card-text">$ {{product.product_price}}</p>
+          <h5 class="card-title">{{item.product_name}}</h5>
+          <p class="card-text">{{item.product_name}}</p>
+          <p class="card-text">$ {{item.product_price}}</p>
+          <a href="{{url_for('delete_item', product_id=item.id)}}">Delete</a>
         </div>
       </div>
     </div>
@@ -21,11 +25,9 @@
 </div>
 <form style="margin:20px;">
   <a class="btn" href="{{url_for('checkout')}}">Check Out</a>
+
 </form>
-
-
-
-
+ {% endif %}
 
 
 {% include "footer.html" %}

@@ -232,7 +232,16 @@ def to_cart(product_id):
 @app.route('/cart')
 def cart():
     user_cart = Cart.query.filter_by(customer_id=current_user.id)
-    return render_template('cart.html', product=user_cart, current_user=current_user)
+    user_cart_count = Cart.query.filter_by(customer_id=current_user.id).count()
+    return render_template('cart.html', items=user_cart, current_user=current_user, count=user_cart_count)
+
+
+@app.route('/delete-item/<int:product_id>')
+def delete_item(product_id):
+    del_item = Cart.query.get(product_id)
+    db.session.delete(del_item)
+    db.session.commit()
+    return redirect(url_for('cart'))
 
 
 @app.route('/checkout')
